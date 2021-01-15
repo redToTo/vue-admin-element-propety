@@ -1,6 +1,6 @@
 # vue-admin-element-propety
 
-> y
+> 
 
 ## Build Setup
 
