@@ -1,13 +1,13 @@
 <template>
   <div class="hello">
-    <svg>
-      <use xlink:href="#icon-eye"></use>
-    </svg>
+  <svg class="svg-icon" aria-hidden="true">
+    <svg-icon icon-class="user" />
+  </svg>
   </div>
 </template>
 
 <script>
-  import '@/icons/svg/eye.svg'
+  import './dashboard.svg'
   
 export default {
   name: 'HelloWorld',

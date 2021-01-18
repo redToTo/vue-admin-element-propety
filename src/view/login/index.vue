@@ -8,7 +8,7 @@
 
       <el-form-item prop="username">
         <span class="svg-container">
-          <svg-icon icon-class="user" />
+          <i class="el-icon-arrow-right"></i>
         </span>
         <el-input
           ref="username"
@@ -23,7 +23,7 @@
 
       <el-form-item prop="password">
         <span class="svg-container">
-          <svg-icon icon-class="password" />
+          <i class="el-icon-arrow-right"></i>
         </span>
         <el-input
           :key="passwordType"
@@ -37,7 +37,7 @@
           @keyup.enter.native="handleLogin"
         />
         <span class="show-pwd" @click=showPwd>
-          <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+          <i class="el-icon-view"></i>
         </span>
       </el-form-item>
 
@@ -47,7 +47,6 @@
         <span style="margin-right:20px;">username: admin</span>
         <span> password: any</span>
       </div>
-
     </el-form>
   </div>
 </template>
@@ -76,8 +75,8 @@
       }
       return {
         loginForm:{
-          username: '',
-          password: ''
+          username: 'admin',
+          password: '123456'
         },
         loginRules: {
           username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -91,7 +90,11 @@
     created(){
 /*     axios.get('http://localhost:8080/user').then((res) => {
         this.validator = res
-      }) */  
+      }) */
+      this.$nextTick(()=>{
+        this.fetch()
+      })
+        
     },
     watch:{
       $router:{
@@ -104,13 +107,10 @@
     methods:{
       fetch(){
         getUser().then((res) => {
-         this.loginForm.username = res.username
-          this.loginForm.password = res.password
           this.validator = res
         })
       },
       showPwd(){
-        console.log(this.passwordType)
         if(this.passwordType === 'password'){
           this.passwordType = ''
         }else{
@@ -125,7 +125,7 @@
           if (valid) {
             this.loading = true
             this.$store.dispatch('user/login', this.loginForm).then(() => {
-              this.$router.push({ path: this.redirect || '/' })
+              this.$router.push({ path: this.redirect || '/des' })
               this.loading = false
             }).catch(() => {
               this.loading = false

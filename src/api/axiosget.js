@@ -4,7 +4,7 @@ export function get (url) {
   return function (params){
     return axios.get(url,{
       params
-    }).then((res) => {
+    }).then((res) => {  
       const data = res.data
         return data
     }).catch((err) => {
