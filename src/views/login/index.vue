@@ -5,10 +5,9 @@
       <div class="title-container">
         <h3 class="title">后台管理系统登录</h3>
       </div>
-
       <el-form-item prop="username">
         <span class="svg-container">
-          <i class="el-icon-arrow-right"></i>
+          <svg-icon icon-class="user" />
         </span>
         <el-input
           ref="username"
@@ -20,10 +19,9 @@
           auto-complete="on"
         />
       </el-form-item>
-
       <el-form-item prop="password">
         <span class="svg-container">
-          <i class="el-icon-arrow-right"></i>
+          <svg-icon icon-class="password" />
         </span>
         <el-input
           :key="passwordType"
@@ -125,7 +123,7 @@
           if (valid) {
             this.loading = true
             this.$store.dispatch('user/login', this.loginForm).then(() => {
-              this.$router.push({ path: this.redirect || '/des' })
+              this.$router.push({ path: this.redirect || '/dashboard' })
               this.loading = false
             }).catch(() => {
               this.loading = false

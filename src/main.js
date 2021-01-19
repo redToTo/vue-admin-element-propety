@@ -6,7 +6,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 import './styles/index.scss'
-import '@/icons'
+import '@/icons' // icon
 import '@/permission' //使用router守卫的beforeEach
 import store from '@/store/index.js'
 
@@ -16,6 +16,5 @@ new Vue({
   el: '#app',
   router,
   store,
-  components: { App },
-  template: '<App/>'
+  render: h => h(App)
 })
