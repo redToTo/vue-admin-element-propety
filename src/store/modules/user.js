@@ -1,5 +1,5 @@
 import { getToken,setToken,removeToken } from '@/utils/auth.js'
-import { getUser,getInfo } from '@/api/index.js'
+import { getUser,getInfo,logout } from '@/api/index.js'
 import { resetRouter } from '@/router'
 
 
@@ -47,11 +47,8 @@ const actions = {
   //获取用户info信息
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then((res) => {
-       console.log(typeof(res))
-        
-        const { data } = res
-         
+      getInfo(state.token).then((res) => {        
+        const { data } = res         
         if (!data) {
           return reject('验证失败，请重新登录')
         }

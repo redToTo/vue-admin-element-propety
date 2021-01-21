@@ -4,13 +4,19 @@ import Layout from '../layout/index.vue'
 
 Vue.use(Router)
 
-const login = () => import('@/views/login/index')
+const originalPush = Router.prototype.push
+Router.prototype.push = function push (location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 export const constantRoutes = [
+  //登录页面路由
   {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
+  //dashborad页面路由
   {
     path: '/',
     component: Layout,
@@ -22,6 +28,7 @@ export const constantRoutes = [
       meta: { title: 'Dashboard', icon: 'dashboard' }
     }]
   },
+  //example页面路由
   {
     path: '/example',
     component: Layout,
@@ -35,7 +42,26 @@ export const constantRoutes = [
         component: () => import('@/views/table/index'),
         meta: { title: 'Table', icon: 'table' }
       },
-
+      {
+        path: 'tree',
+        name: 'Tree',
+        component: () => import('@/views/tree/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
+  {
+    path: '/form',
+    component: Layout,
+    children: [
+      {
+        path: 'index',
+        name: 'Form',
+        component: () => import('@/views/form/index'),
+        meta: { title: 'Form', icon: 'form' }
+      }
+    ]
+  },
   {
     path: '/nested',
     component: Layout,
@@ -94,8 +120,8 @@ export const constantRoutes = [
       }
     ]
   }
-    ]
-  }
+    
+  
 ]
   
 const createRouter = () => new Router({

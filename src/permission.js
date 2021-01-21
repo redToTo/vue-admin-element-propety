@@ -38,7 +38,6 @@ router.beforeEach(async(to,from,next) => {
     //没有token的时候
     //当我们的准备前往路由是‘/login’时，我们不需要操作，继续下一个钩子的执行
     if(whiteList.indexOf(to.path) !== -1){
-      console.log(1111)
       next()
     }else{
       next(`/login?redirect=${to.path}`)

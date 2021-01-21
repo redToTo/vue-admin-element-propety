@@ -24,6 +24,7 @@ const mutations = {
     state.sidebar.withoutAnimation = withoutAnimation
   },
   TOGGLE_DEVICE: (state, device) => {
+
     state.device = device
   }
 }
