@@ -51,6 +51,21 @@ export const constantRoutes = [
     ]
   },
   {
+    path:'/emploee',
+    component:Layout,
+    alwaysShow: true ,
+    redirect:'/emploee/controll',
+    meta:{title:'员工管理',icon:'people'},
+    children:[
+      {
+        path:'controll',
+        name:'Controll',
+        component:() => import('@/views/emploee/index'),
+        meta: { title: 'Tree', icon: 'tree' }
+      }
+    ]
+  },
+  {
     path: '/form',
     component: Layout,
     children: [

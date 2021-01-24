@@ -47,8 +47,9 @@ const actions = {
   //获取用户info信息
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
-      getInfo(state.token).then((res) => {        
-        const { data } = res         
+      getInfo(state.token).then((res) => {
+        var str = JSON.stringify(res); 
+        const  { data }  = res
         if (!data) {
           return reject('验证失败，请重新登录')
         }
